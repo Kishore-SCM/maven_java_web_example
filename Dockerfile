@@ -10,6 +10,6 @@ RUN mvn clean
 
 RUN mvn test -X
 
-RUN mvn package
+RUN package
 
 CMD ["mvn" , "tomcat7:run"]
