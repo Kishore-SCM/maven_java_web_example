@@ -1,15 +1,19 @@
 FROM maven:3.6.3-jdk-8
 
-RUN apt update -y &&  apt install git -y
+# Set working directory
+WORKDIR /app
 
+# Install git
+RUN apt-get update && apt-get install -y git
+
+# Clone source code
 RUN git clone https://github.com/Kishore-SCM/maven_java_web_example.git
 
-WORKDIR $PWD/maven_java_web_example
+# Move into project directory
+WORKDIR /app/maven_java_web_example
 
-RUN mvn clean
+# Build the application
+RUN mvn clean test package
 
-RUN mvn test -X
-
-RUN package
-
-CMD ["mvn" , "tomcat7:run"]
+# Run the application
+CMD ["mvn", "tomcat7:run"]
