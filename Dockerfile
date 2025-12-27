@@ -4,7 +4,7 @@ FROM maven:3.6.3-jdk-8
 WORKDIR /app
 
 # Install git
-RUN apt-get update && apt-get install -y git
+#RUN apt-get update && apt-get install -y git
 
 # Clone source code
 RUN git clone https://github.com/Kishore-SCM/maven_java_web_example.git
